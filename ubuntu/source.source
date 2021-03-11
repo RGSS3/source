@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+tmux new -d -s Source
+tmux split-pane -h
+tmux select-pane -L
+touch fname.txt
+tmux send-keys 'watch -c source-highlight -f esc -i $(cat fname.txt) -o /dev/stdout' ENTER
+tmux split-pane -v
+touch info.txt
+tmux send-keys 'watch cat info.txt' ENTER
+tmux select-pane -R
+tmux attach -t Source
