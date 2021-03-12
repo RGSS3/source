@@ -7,9 +7,9 @@ s.edit() {
 s.ed() {
 	ruby -e '
 fname = File.read("fname.txt")
-$L = File.read(fname).split("\n")
-eval ARGV[0]
-File.write fname, $L.join("\n") + "\n"
+L = File.read(fname).split("\n")
+eval ARGV[0] 
+File.write fname, L.join("\n") + "\n"
 ' "$1"
 }
 
