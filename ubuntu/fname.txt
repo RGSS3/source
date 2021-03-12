@@ -1,1 +1,1 @@
-test/a.c
+test/b.c

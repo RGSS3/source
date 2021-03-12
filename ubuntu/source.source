@@ -3,9 +3,10 @@ tmux new -d -s Source
 tmux split-pane -h
 tmux select-pane -L
 touch fname.txt
-tmux send-keys 'watch -c source-highlight -f esc -i $(cat fname.txt) -o /dev/stdout' ENTER
+tmux send-keys "ruby -e 'loop do system %{clear}; system %{./text.pane}; sleep 2 end'" ENTER
 tmux split-pane -v
 touch info.txt
-tmux send-keys 'watch cat info.txt' ENTER
+tmux send-keys 'watch -c ./info.pane' ENTER
 tmux select-pane -R
+tmux send-keys 'source editing.bash' ENTER
 tmux attach -t Source
