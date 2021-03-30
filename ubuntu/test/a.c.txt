@@ -1,5 +1,0 @@
-[30m1:[m [01;34m#include[m [31m<stdio.h>[m
-[30m2:[m [32mint[m [01;30mmain[m[31m([m[32mvoid[m[31m)[m[31m{[m
-[30m3:[m     [01;30mputs[m[31m([m[31m"Hello world"[m[31m);[m
-[30m4:[m [31m}[m
-[30m5:[m 

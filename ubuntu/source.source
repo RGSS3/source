@@ -1,12 +1,25 @@
 #!/usr/bin/env bash
+export SOURCE_HOME=$(dirname "${BASH_SOURCE[0]}")
+export SOURCE_INIT=$(pwd)
+export PATH=$SOURCE_HOME/bin:$PATH
+source_init_dir="$SOURCE_HOME/initial.source.dir"
+export SOURCE_DIR="$SOURCE_INIT/.source"
+if [ ! -d $source_dir ]
+then
+   mkdir -v $source_dir || (
+   	   echo "Source: can not init";
+   	   return 1
+   )
+   rsync -r -v $source_init_dir/* $source_dir || (
+       echo "Source: can not init";
+       return 2
+   )
+fi
 tmux new -d -s Source
 tmux split-pane -h
 tmux select-pane -L
-touch fname.txt
-tmux send-keys "ruby -e 'loop do system %{clear}; system %{./text.pane}; sleep 2 end'" ENTER
+tmux send-keys "ruby -e 'loop do system %{clear}; system %{\$SOURCE_DIR/text.pane}; sleep 2 end'" ENTER
 tmux split-pane -v
-touch info.txt
-tmux send-keys 'watch -c ./info.pane' ENTER
+tmux send-keys 'watch -c \$SOURCE_DIR/info.pane' ENTER
 tmux select-pane -R
-tmux send-keys 'source editing.bash' ENTER
 tmux attach -t Source

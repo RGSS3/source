@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-source-highlight -f esc256 -n -i $(cat fname.txt) -o /dev/stdout

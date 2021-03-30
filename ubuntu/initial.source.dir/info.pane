@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+gcc @$HOME/options.txt $(cat "$SOURCE_DIR/fname.txt")
